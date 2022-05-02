@@ -19,7 +19,6 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url "https://jitpack.io" }
     }
 
     group = 'com.github.lee-junghyun'
@@ -28,10 +27,4 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
-}
-
-ext {
-    libraries = [
-            annotations: "com.android.support:support-annotations:26.0.1"
-    ]
 }
