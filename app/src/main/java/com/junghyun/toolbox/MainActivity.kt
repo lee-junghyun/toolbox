@@ -11,6 +11,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val a = TimeManager()
+
         Log.e(applicationContext.toString(), a.getTime().toString())
+        Log.e(applicationContext.toString(), a.getTime("abcdefghijklmn").toString())
+        Log.e(applicationContext.toString(), a.getTime("YY년 M월 d일 HH시").toString())
+        Log.e(applicationContext.toString(), a.getTime("YY년 MM월 dd일 HH시", "Asia/Seoul").toString())
+        Log.e(applicationContext.toString(), a.getTimeUseJustTimeZone("America/Toronto").toString())
     }
 }

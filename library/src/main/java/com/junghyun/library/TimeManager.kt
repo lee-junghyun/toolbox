@@ -6,7 +6,7 @@ import java.util.*
 
 public class TimeManager {
 
-    protected var mTimeFormat: String = "yyyy-MM-dd hh:mm:ss"
+    protected var mTimeFormat: String = "yyyy-MM-dd HH:mm:ss"
     protected lateinit var mTimeZone: TimeZone
 //    var mCountryCode: Int = 0
 //
