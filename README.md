@@ -16,6 +16,9 @@ Step 2. Add the dependency
 	        implementation 'com.github.lee-junghyun:toolbox:0.0.9'
 	}
 
+# Class List
+TimeManager : 시간 포멧과 타임존 코드를 이용하여 현재 시간을 구할 수 있다.
+
 
 # Android TimeZone Codes
 
