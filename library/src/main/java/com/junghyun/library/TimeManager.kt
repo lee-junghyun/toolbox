@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat
 
 public class TimeManager {
 
-    var mTimeFormat: String = "yyyy-mm-dd hh:mm:ss"
+    var mTimeFormat: String = "yyyy-MM-dd hh:mm:ss"
 //    var mCountryCode: Int = 0
 //
 //    constructor(timeFormat: String) {
