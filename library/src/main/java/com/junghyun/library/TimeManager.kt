@@ -1,10 +1,13 @@
 package com.junghyun.library
 
+import java.lang.Exception
 import java.text.SimpleDateFormat
+import java.util.*
 
 public class TimeManager {
 
-    var mTimeFormat: String = "yyyy-MM-dd hh:mm:ss"
+    protected var mTimeFormat: String = "yyyy-MM-dd hh:mm:ss"
+    protected lateinit var mTimeZone: TimeZone
 //    var mCountryCode: Int = 0
 //
 //    constructor(timeFormat: String) {
@@ -24,21 +27,46 @@ public class TimeManager {
         return timeGetter(mTimeFormat)
     }
 
-    fun getTime(timeFormat: String, countryCode: Int){
+    fun getTime(timeFormat: String): String? {
+        return timeGetter(timeFormat)
+    }
+
+    fun getTime(timeFormat: String, timeZoneCode: String): String? {
+        return timeGetterUseTimeZone(timeFormat, timeZoneCode)
+    }
+
+    fun getTimeUseJustTimeZone(timeZoneCode: String): String? {
+        return timeGetterUseTimeZone(mTimeFormat, timeZoneCode)
+    }
+
+    protected fun timeGetter(timeFormat: String): String?{
+
+        try {
+            val currentTime : Long = System.currentTimeMillis()
+            val dataFormat = SimpleDateFormat(timeFormat)
+            return dataFormat.format(currentTime)
+        } catch (e: Exception) {
+            return "지원하지 않는 시간포멧을 사용중입니다."
+        }
 
     }
 
-    fun getTime(countryCode: Int){
+    protected fun timeGetterUseTimeZone(timeFormat: String, timeZoneCode: String): String?{
 
+        try {
+
+            val currentTime : Long = System.currentTimeMillis()
+            val dataFormat = SimpleDateFormat(timeFormat)
+
+            mTimeZone = TimeZone.getTimeZone(timeZoneCode)
+            dataFormat.timeZone = mTimeZone
+
+            return dataFormat.format(currentTime)
+
+        } catch (e: Exception) {
+            return "지원하지 않는 시간포멧을 사용중입니다."
+        }
 
     }
-
-    fun timeGetter(timeFormat: String): String? {
-        val currentTime : Long = System.currentTimeMillis()
-        val dataFormat = SimpleDateFormat(timeFormat)
-        return dataFormat.format(currentTime)
-    }
-
-
 
 }
