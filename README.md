@@ -17,7 +17,7 @@ Step 2. Add the dependency
 	}
 
 # Class List
-TimeManager : 시간 포멧과 타임존 코드를 이용하여 현재 시간을 구할 수 있다.
+TimeManager : 시간 포멧과 타임존 코드를 이용하여 현재 시간을 구할 수 있다.(Android TimeZone Codes 참고)
 
 
 # Android TimeZone Codes
