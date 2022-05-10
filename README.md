@@ -13,7 +13,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.lee-junghyun:toolbox:0.0.9'
+	        implementation 'com.github.lee-junghyun:toolbox:0.1.2'
 	}
 
 # Class List
@@ -27,8 +27,10 @@ TimeManager : 시간 포멧과 타임존 코드를 이용하여 현재 시간을
 
        Log.e(applicationContext.toString(), a.getTime().toString())
        Log.e(applicationContext.toString(), a.getTime("YY년 M월 d일 HH시").toString())
+       Log.e(applicationContext.toString(), a.getTime("YY년 MM월 dd일 HH시", "Asia/Seoul").toString())
+       Log.e(applicationContext.toString(), a.getTimeUseJustTimeZone("America/Toronto").toString())
 
-}
+    }
 
 
 NetworkConnectManager : 장치의 네트워크 연결 유무를 구할 수 있다.
