@@ -19,6 +19,40 @@ Step 2. Add the dependency
 # Class List
 TimeManager : 시간 포멧과 타임존 코드를 이용하여 현재 시간을 구할 수 있다.(Android TimeZone Codes 참고)
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+       super.onCreate(savedInstanceState)
+       setContentView(R.layout.activity_main)
+
+       val a = TimeManager()
+
+       Log.e(applicationContext.toString(), a.getTime().toString())
+       Log.e(applicationContext.toString(), a.getTime("YY년 M월 d일 HH시").toString())
+
+}
+
+
+NetworkConnectManager : 장치의 네트워크가 연결 유무를 구할 수 있다.
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        NetworkConnectManager(applicationContext).observe(this, Observer { isConnected ->
+            if (isConnected) {
+                Log.e(applicationContext.toString(), "is Network connected")
+            } else {
+                Log.e(applicationContext.toString(), "is Network Not connected")
+            }
+        })
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        NetworkConnectManager(applicationContext).removeObservers(this)
+	
+     }
 
 # Android TimeZone Codes
 
