@@ -23,6 +23,7 @@ class RealtimeLocationManager {
     val MY_PERMISSIONS_REQUEST_LOCATION = 100
 
     var myLocationListener: MyLocationListener? = null
+    var mLocationManager: LocationManager? = null
 
     interface MyLocationListener {
         fun onLocationChange(location: Location)
@@ -33,7 +34,7 @@ class RealtimeLocationManager {
     fun startListeningUserLocation(context: Context, myListener: MyLocationListener) {
         myLocationListener = myListener
 
-        val mLocationManager = context.getSystemService(LOCATION_SERVICE) as LocationManager
+        mLocationManager = context.getSystemService(LOCATION_SERVICE) as LocationManager
 
         val mLocationListener = object : LocationListener {
             override fun onLocationChanged(location: Location) {
@@ -58,7 +59,7 @@ class RealtimeLocationManager {
 
         // check for permissions
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(context,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, LOCATION_REFRESH_TIME.toLong(),LOCATION_REFRESH_DISTANCE.toFloat(), mLocationListener)
+            mLocationManager!!.requestLocationUpdates(LocationManager.GPS_PROVIDER, LOCATION_REFRESH_TIME.toLong(),LOCATION_REFRESH_DISTANCE.toFloat(), mLocationListener)
         } else {
             if (ActivityCompat.shouldShowRequestPermissionRationale(context as Activity, Manifest.permission.ACCESS_FINE_LOCATION) || ActivityCompat.shouldShowRequestPermissionRationale(context as Activity,Manifest.permission.ACCESS_COARSE_LOCATION)) {
                 // permission is denined by user, you can show your alert dialog here to send user to App settings to enable permission
@@ -72,7 +73,7 @@ class RealtimeLocationManager {
     fun startListeningUserLocation(context: Context, locationRefreshTime: Int, locationRefreshDistance: Int, myListener: MyLocationListener) {
         myLocationListener = myListener
 
-        val mLocationManager = context.getSystemService(LOCATION_SERVICE) as LocationManager
+        mLocationManager = context.getSystemService(LOCATION_SERVICE) as LocationManager
 
         val mLocationListener = object : LocationListener {
             override fun onLocationChanged(location: Location) {
@@ -97,7 +98,7 @@ class RealtimeLocationManager {
 
         // check for permissions
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(context,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, locationRefreshTime.toLong(),locationRefreshDistance.toFloat(), mLocationListener)
+            mLocationManager!!.requestLocationUpdates(LocationManager.GPS_PROVIDER, locationRefreshTime.toLong(),locationRefreshDistance.toFloat(), mLocationListener)
         } else {
             if (ActivityCompat.shouldShowRequestPermissionRationale(context as Activity, Manifest.permission.ACCESS_FINE_LOCATION) || ActivityCompat.shouldShowRequestPermissionRationale(context as Activity,Manifest.permission.ACCESS_COARSE_LOCATION)) {
                 // permission is denined by user, you can show your alert dialog here to send user to App settings to enable permission
@@ -106,6 +107,5 @@ class RealtimeLocationManager {
             }
         }
     }
-
 
 }
