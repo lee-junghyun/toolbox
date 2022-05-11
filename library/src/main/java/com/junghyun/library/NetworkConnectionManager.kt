@@ -10,7 +10,7 @@ import androidx.annotation.RequiresApi
 
 import androidx.lifecycle.LiveData
 
-class NetworkConnectManager(private val context: Context) : LiveData<Boolean>() {
+class NetworkConnectionManager(private val context: Context) : LiveData<Boolean>() {
 
     private var connectivityManager: ConnectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     private lateinit var networkCallback: ConnectivityManager.NetworkCallback

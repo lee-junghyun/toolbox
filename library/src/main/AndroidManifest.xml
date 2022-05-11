@@ -2,5 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.junghyun.library">
 
+    <!--    네트워크 상태    -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!--    인터넷 사용   -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!--    Location    -->
+    <!--    정확한 위치    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!--    대략적인 위치    -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+
+
 </manifest>
