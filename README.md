@@ -55,6 +55,36 @@ NetworkConnectionManager : 장치의 네트워크 연결 유무를 구할 수 �
         NetworkConnectionManager(applicationContext).removeObservers(this)
 	
      }
+     
+RealtimeLocationManager : 위치 정보를 실시간으로 받는 기능
+
+    RealtimeLocationManager().startListeningUserLocation(this , object : RealtimeLocationManager.MyLocationListener {
+            override fun onLocationChange(location: Location) {
+              
+                Log.e(applicationContext.toString(),"" + location.latitude + "," + location.longitude)
+
+            }
+
+            override fun onAddressChange(address: String) {
+	    
+                Log.e(applicationContext.toString(),address)
+		
+            }
+        })
+
+    RealtimeLocationManager().startListeningUserLocation(this , 3000, 10, object : RealtimeLocationManager.MyLocationListener {
+            override fun onLocationChange(location: Location) {
+     
+                Log.e(applicationContext.toString(),"" + location.latitude + "," + location.longitude)
+
+            }
+
+            override fun onAddressChange(address: String) {
+	    
+                Log.e(applicationContext.toString(),address)
+
+            }
+        })
 
 # Android TimeZone Codes
 
